@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<li th:each="article : ${articles}">
+    <p>Name: <span th:text="${article.content}"></span>.</p>
+    <p>Name: <span th:text="${article.id}"></span>.</p>
+    <p>Name: <span th:text="${article.title}"></span>.</p>
+    <p>Name: <span th:text="${article.user.id}"></span>.</p>
+    <p>Name: <span th:text="${article.user.note}"></span>.</p>
+    <p>Name: <span th:text="${article.user.userName}"></span>.</p>
+</li>
+</body>
+</html>
