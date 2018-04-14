@@ -1,3 +1,5 @@
+package com.troy1024;
+
 import com.troy1024.bean.User;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;

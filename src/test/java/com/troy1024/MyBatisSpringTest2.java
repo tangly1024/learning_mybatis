@@ -1,3 +1,5 @@
+package com.troy1024;
+
 import com.troy1024.bean.Article;
 import com.troy1024.bean.User;
 import com.troy1024.mapper.UserMapper;
