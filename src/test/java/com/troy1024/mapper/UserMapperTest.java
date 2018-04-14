@@ -86,7 +86,7 @@ public class UserMapperTest {
 
     @Test
     public void getUserArticles() throws Exception {
-        List<Article> articles = userMapper.getUserArticles(1);
+        List<Article> articles = userMapper.getUserArticlesByUserId(1);
         for(Article a:articles){
             System.out.println(a);
         }

@@ -38,9 +38,9 @@
         <association property="user" resultMap="resultListUser"></association>
     </resultMap>
     <!--aritle的id一定要别名，不能和user的id混淆-->
-    <select id="getUserArticles" parameterType="int" resultMap="resultUserArticleList">
-        select t_user.*,t_article.id aid, t_article.content,t_article.title,t_article.userid from t_user,t_article
-        where t_user.id = t_article.userid and t_user.id=#{id}
+    <select id="getUserArticlesByUserId" parameterType="int" resultMap="resultUserArticleList">
+        select a.id aid, a.content,a.title,a.userid,u.* from t_article a
+        LEFT JOIN t_user u on u.id = a.userid where a.userid=#{id}
     </select>
 
 </mapper>

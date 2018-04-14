@@ -50,7 +50,7 @@ public interface UserMapper {
      * @param i
      * @return
      */
-    List<Article> getUserArticles(int i);
+    List<Article> getUserArticlesByUserId(int i);
 
 
 }
