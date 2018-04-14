@@ -14,5 +14,5 @@ public interface UserMapper {
      * @param id  
      * @return  
      */  
-    public User findUserById(int id);
+    User findUserById(int id);
 }
