@@ -6,12 +6,12 @@
 </head>
 <body>
 <li th:each="article : ${articles}">
-    <p>Name: <span th:text="${article.content}"></span>.</p>
-    <p>Name: <span th:text="${article.id}"></span>.</p>
-    <p>Name: <span th:text="${article.title}"></span>.</p>
-    <p>Name: <span th:text="${article.user.id}"></span>.</p>
-    <p>Name: <span th:text="${article.user.note}"></span>.</p>
-    <p>Name: <span th:text="${article.user.userName}"></span>.</p>
+    <span th:text="${article.content}"></span>
+    <span th:text="${article.id}"></span>
+    <span th:text="${article.title}"></span>
+    <span th:text="${article.user.id}"></span>
+    <span th:text="${article.user.note}"></span>
+    <span th:text="${article.user.userName}"></span>
 </li>
 </body>
 </html>

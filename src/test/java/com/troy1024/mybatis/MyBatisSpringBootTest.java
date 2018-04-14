@@ -1,4 +1,4 @@
-package com.troy1024;
+package com.troy1024.mybatis;
 
 import com.troy1024.mapper.UserMapper;
 import org.junit.Test;

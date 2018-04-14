@@ -1,4 +1,4 @@
-package com.troy1024;
+package com.troy1024.mybatis;
 
 import com.troy1024.bean.User;
 import org.apache.ibatis.io.Resources;
