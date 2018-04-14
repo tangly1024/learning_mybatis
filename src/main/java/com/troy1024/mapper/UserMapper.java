@@ -52,5 +52,17 @@ public interface UserMapper {
      */
     List<Article> getUserArticlesByUserId(int i);
 
+    /**
+     * 获取类似的文章
+     * @param article
+     * @return
+     */
+    List<Article> getArticleListPyExample(Article article);
+
+    /**
+     * 动态更新对象，只更新传入的对象id非空的字段
+     * @param article
+     */
+    void updateArticleByNotNulParam(Article article);
 
 }

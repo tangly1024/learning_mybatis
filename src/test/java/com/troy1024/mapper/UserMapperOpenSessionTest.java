@@ -14,9 +14,10 @@ import java.io.InputStream;
 import java.util.List;
 
 /**
+ * 引入PageHelper后就不能用这种非Spring的方式调用SqlSessioinn
  * Created by tangly on 2018/4/14.
  */
-public class UserMapperTest {
+public class UserMapperOpenSessionTest {
 
     private SqlSessionFactory sqlSessionFactory;
     private SqlSession openSession;
