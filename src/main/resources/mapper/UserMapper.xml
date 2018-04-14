@@ -3,33 +3,20 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.troy1024.mapper.UserMapper">
 
-
-
-
     <resultMap type="com.troy1024.bean.User" id="resultListUser">
         <id column="id" property="id"/>
         <result column="userName" property="userName"/>
+        <result column="note" property="note"/>
     </resultMap>
-
 
     <select id="findUserById" resultType="com.troy1024.bean.User">
         select * from t_user where id = #{id}
     </select>
 
-    <select id="findUsersByUserNames" parameterType="string" resultMap="resultListUser">
+    <select id="findUsersByUserNames" parameterType="string" resultType="User">
         select * from t_user where userName like #{userName}
     </select>
 
-
-    <!--执行增加操作的SQL语句。id和parameterType
-    分别与IUserOperation接口中的addUser方法的名字和
-    参数类型一致。以#{name}的形式引用Student参数
-    的name属性，MyBatis将使用反射读取Student参数
-    的此属性。#{name}中name大小写敏感。引用其他
-    的gender等属性与此一致。seGeneratedKeys设置
-    为"true"表明要MyBatis获取由数据库自动生成的主
-    键；keyProperty="id"指定把获取到的主键值注入
-    到Student的id属性-->
     <insert id="addUser" parameterType="com.troy1024.bean.User" useGeneratedKeys="true" keyProperty="id">
         insert into t_user(userName,note)
         values(#{userName},#{note})
@@ -42,5 +29,18 @@
     <delete id="deleteUser" parameterType="int">
         delete from t_user where id=#{id}
     </delete>
+
+    <!-- User 联合文章进行查询 方法之一的配置 (多对一的方式)  -->
+    <resultMap id="resultUserArticleList" type="com.troy1024.bean.Article">
+        <id property="id" column="aid" />
+        <result property="title" column="title" />
+        <result property="content" column="content" />
+        <association property="user" resultMap="resultListUser"></association>
+    </resultMap>
+    <!--aritle的id一定要别名，不能和user的id混淆-->
+    <select id="getUserArticles" parameterType="int" resultMap="resultUserArticleList">
+        select t_user.*,t_article.id aid, t_article.content,t_article.title,t_article.userid from t_user,t_article
+        where t_user.id = t_article.userid and t_user.id=#{id}
+    </select>
 
 </mapper>

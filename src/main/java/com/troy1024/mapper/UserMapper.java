@@ -1,5 +1,6 @@
 package com.troy1024.mapper;
 
+import com.troy1024.bean.Article;
 import com.troy1024.bean.User;
 
 import java.util.List;
@@ -43,5 +44,13 @@ public interface UserMapper {
      * @param id
      */
     void deleteUser(int id);
+
+    /**
+     * 获取用户发表的文章
+     * @param i
+     * @return
+     */
+    List<Article> getUserArticles(int i);
+
 
 }

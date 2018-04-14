@@ -1,5 +1,6 @@
 package com.troy1024.mapper;
 
+import com.troy1024.bean.Article;
 import com.troy1024.bean.User;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -81,6 +82,14 @@ public class UserMapperTest {
     public void deleteUser() throws Exception {
         userMapper.deleteUser(1);
         openSession.commit();
+    }
+
+    @Test
+    public void getUserArticles() throws Exception {
+        List<Article> articles = userMapper.getUserArticles(1);
+        for(Article a:articles){
+            System.out.println(a);
+        }
     }
 
 }
