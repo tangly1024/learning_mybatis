@@ -1,7 +1,6 @@
-package com.troy1024.mapper;
-
 import com.troy1024.bean.Article;
 import com.troy1024.bean.User;
+import com.troy1024.mapper.UserMapper;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
