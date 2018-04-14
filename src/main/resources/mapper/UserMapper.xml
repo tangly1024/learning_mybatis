@@ -2,7 +2,92 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.troy1024.mapper.UserMapper">
+
+    <resultMap type="com.troy1024.bean.User" id="resultListUser">
+        <id column="id" property="id"/>
+        <result column="userName" property="userName"/>
+        <result column="note" property="note"/>
+    </resultMap>
+
     <select id="findUserById" resultType="com.troy1024.bean.User">
-        select id, loginId, userName, role, note from t_user where id = #{id}
+        SELECT *
+        FROM t_user
+        WHERE id = #{id}
     </select>
+
+    <select id="findUsersByUserNames" parameterType="string" resultType="User">
+        SELECT *
+        FROM t_user
+        WHERE userName LIKE #{userName}
+    </select>
+
+    <insert id="addUser" parameterType="com.troy1024.bean.User" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO t_user (userName, note)
+        VALUES (#{userName}, #{note})
+    </insert>
+
+    <update id="updateUser" parameterType="com.troy1024.bean.User">
+        UPDATE t_user
+        SET userName = #{userName}, note = #{note}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="deleteUser" parameterType="int">
+        DELETE FROM t_user
+        WHERE id = #{id}
+    </delete>
+
+    <!-- User 联合文章进行查询 方法之一的配置 (多对一的方式)  -->
+    <resultMap id="resultUserArticleList" type="com.troy1024.bean.Article">
+        <id property="id" column="aid"/>
+        <result property="title" column="title"/>
+        <result property="content" column="content"/>
+        <association property="user" resultMap="resultListUser"></association>
+    </resultMap>
+    <!--aritle的id一定要别名，不能和user的id混淆-->
+    <select id="getUserArticlesByUserId" parameterType="int" resultMap="resultUserArticleList">
+        SELECT
+            a.id aid,
+            a.content,
+            a.title,
+            a.userid,
+            u.*
+        FROM t_article a
+            LEFT JOIN t_user u ON u.id = a.userid
+        WHERE a.userid = #{id}
+    </select>
+
+    <!--动态SELECT sql-->
+    <select id="getArticleListPyExample" parameterType="com.troy1024.bean.Article" resultMap="resultUserArticleList">
+        select a.id aid ,a.content, a.title, a.userid,u.* from t_article a LEFT JOIN t_user u on u.id = a.userid
+        where 1 = 1
+        <if test="title != null">
+            and title LIKE #{title}
+        </if>
+        <if test="content != null">
+            AND content LIKE #{content}
+        </if>
+        <if test="user != null">
+            and userId = #{user.id}
+        </if>
+    </select>
+
+    <!--动态UPDATE sql-->
+    <update id="updateArticleByNotNulParam" parameterType="com.troy1024.bean.Article">
+        update t_article
+        <set>
+            <if test="title != null">
+                title = #{title},
+            </if>
+            <if test="content != null">
+                content = #{content},
+            </if>
+            <if test="user != null">
+                userid = #{user.id}
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+
 </mapper>

@@ -1,6 +1,9 @@
 package com.troy1024.mapper;
 
+import com.troy1024.bean.Article;
 import com.troy1024.bean.User;
+
+import java.util.List;
 
 /**
  * @since 2017-07-15  
@@ -14,5 +17,52 @@ public interface UserMapper {
      * @param id  
      * @return  
      */  
-    public User findUserById(int id);
+    User findUserById(int id);
+
+    /**
+     * 根据用户名查找用户
+     * @param userName
+     * @return
+     */
+    List<User> findUsersByUserNames(String userName);
+
+    /**
+     * 新增用户
+     * @param user
+     * @return
+     */
+    void addUser(User user);
+
+    /**
+     * 更新用户
+     * @param user
+     */
+    void updateUser(User user);
+
+    /**
+     * 删除用户
+     * @param id
+     */
+    void deleteUser(int id);
+
+    /**
+     * 获取用户发表的文章
+     * @param i
+     * @return
+     */
+    List<Article> getUserArticlesByUserId(int i);
+
+    /**
+     * 获取类似的文章
+     * @param article
+     * @return
+     */
+    List<Article> getArticleListPyExample(Article article);
+
+    /**
+     * 动态更新对象，只更新传入的对象id非空的字段
+     * @param article
+     */
+    void updateArticleByNotNulParam(Article article);
+
 }

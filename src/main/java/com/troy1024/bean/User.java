@@ -8,60 +8,51 @@ package com.troy1024.bean;
  */
 public class User {
     // ID，唯一性
-	private String id;
-	// 登录ID
-	private String loginId;
+	private int id;
 	// 用户名
 	private String userName;
-	// 角色
-	private String role;
-	// 备注
+
+	//备注
 	private String note;
 
-	public String getId() {
-		return id;
-	}
+    public User() {
+    }
 
-	public void setId(String id) {
-		this.id = id;
-	}
+    public User(String userName, String note) {
+        this.userName = userName;
+        this.note = note;
+    }
 
-	public String getLoginId() {
-		return loginId;
-	}
+    public int getId() {
+        return id;
+    }
 
-	public void setLoginId(String loginId) {
-		this.loginId = loginId;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	public String getUserName() {
-		return userName;
-	}
+    public String getUserName() {
+        return userName;
+    }
 
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 
-	public String getRole() {
-		return role;
-	}
+    public String getNote() {
+        return note;
+    }
 
-	public void setRole(String role) {
-		this.role = role;
-	}
+    public void setNote(String note) {
+        this.note = note;
+    }
 
-	public String getNote() {
-		return note;
-	}
-
-	public void setNote(String note) {
-		this.note = note;
-	}
-
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", loginId=" + loginId + ", userName="
-				+ userName + ", role=" + role + ", note=" + note + "]";
-	}
-
+    @Override
+    public String toString() {
+        return "User{" +
+                "id='" + id + '\'' +
+                ", userName='" + userName + '\'' +
+                ", note='" + note + '\'' +
+                '}';
+    }
 }
