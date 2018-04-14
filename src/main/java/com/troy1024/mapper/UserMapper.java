@@ -2,6 +2,8 @@ package com.troy1024.mapper;
 
 import com.troy1024.bean.User;
 
+import java.util.List;
+
 /**
  * @since 2017-07-15  
  * @author queen   
@@ -15,4 +17,31 @@ public interface UserMapper {
      * @return  
      */  
     User findUserById(int id);
+
+    /**
+     * 根据用户名查找用户
+     * @param userName
+     * @return
+     */
+    List<User> findUsersByUserNames(String userName);
+
+    /**
+     * 新增用户
+     * @param user
+     * @return
+     */
+    void addUser(User user);
+
+    /**
+     * 更新用户
+     * @param user
+     */
+    void updateUser(User user);
+
+    /**
+     * 删除用户
+     * @param id
+     */
+    void deleteUser(int id);
+
 }

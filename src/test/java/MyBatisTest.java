@@ -1,5 +1,4 @@
 import com.troy1024.bean.User;
-import com.troy1024.mapper.UserMapper;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -43,16 +42,7 @@ public class MyBatisTest {
         } finally {  
             openSession.close();  
         }  
-  
-    }  
-
-    @Test
-    public void testMapper() throws IOException {
-        SqlSessionFactory sqlSessionFactory = getSqlSessionFactory();
-        SqlSession openSession = sqlSessionFactory.openSession();
-
-        UserMapper userMapper = openSession.getMapper(UserMapper.class);
-        User user = userMapper.findUserById(1);
-        System.out.println(user);
     }
+
+
 }
