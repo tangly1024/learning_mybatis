@@ -32,6 +32,9 @@ public class MyBatisTestPageHelper {
         // 取分页信息
         PageInfo<Article> pageInfo = new PageInfo<>(userList);
         long total = pageInfo.getTotal(); //获取总记录数
+        System.out.println(pageInfo);
+        System.out.println(pageInfo.getPages());
+        System.out.println(pageInfo.getList().size());
         System.out.println("共有数据：" + total);
     }
 
